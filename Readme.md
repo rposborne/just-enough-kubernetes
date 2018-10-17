@@ -6,11 +6,13 @@ Code Examples and basic app to deploy.
 
 # Level 1
 
-    kubectl create manifests/level-1/pod.yaml
+    kubectl create -f manifests/level-1/pod.yaml
+
+https://cloud.docker.com/repository/docker/burningpony/just-enough-kubernetes/general
 
 # Level 2
 
-    kubectl create manifests/level-1/deployment.yaml
+    kubectl create -f manifests/level-1/deployment.yaml
 
 ## Cut a new version
 
@@ -27,7 +29,7 @@ https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a
 
 # Level 3
 
-    kubectl create manifests/level-3
+    kubectl create -f manifests/level-3
 
 
 ## License

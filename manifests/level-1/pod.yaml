@@ -28,6 +28,3 @@ spec:
     # args:
     #   - "-p 3000"
     imagePullPolicy: Always
-    ports:
-      - name: http
-        containerPort: 9292
