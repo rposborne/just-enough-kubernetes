@@ -1,0 +1,21 @@
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: just-enough-ingress
+  spec:
+    rules:
+      #  A DNS name that points at localhost
+      - host: lvh.me
+        http:
+          paths:
+            - backend:
+                serviceName: just-enough-service
+                servicePort: 80
+              path: /
+    # This section is only required if TLS is to be enabled for the Ingress
+    # tls:
+    #     - hosts:
+    #         - www.example.com
+    #       secretName: example-tls

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+TAG=$1
+docker build . -t burningpony/just-enough-kubernetes:release-$TAG
+docker push burningpony/just-enough-kubernetes:release-$TAG
+
+kubectl set image deployment/just-enough-deployment just-enough-container=burningpony/just-enough-kubernetes:release-$TAG --record
+
+kubectl rollout status deployment just-enough-deployment

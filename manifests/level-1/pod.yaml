@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: just-enough-pod-v1
+  labels:
+    app: just-enough-pod-example
+spec:
+  containers:
+  - name: just-enough-container
+    env:
+    - name: RACK_ENV
+      value: production
+
+    # Use the downward API to know expose pod name to the ENV
+    # https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
+    # - name: MY_POD_NAME
+    #   valueFrom:
+    #     fieldRef:
+    #       fieldPath: metadata.name
+    # - name: MY_NODE_NAME
+    #   valueFrom:
+    #     fieldRef:
+    #       fieldPath: spec.nodeName
+
+    image: burningpony/just-enough-kubernetes:release-0.0.1
+    command:
+      - rackup
+    # args:
+    #   - "-p 3000"
+    imagePullPolicy: Always
+    ports:
+      - name: http
+        containerPort: 9292

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+kubectl delete -f manifests/level-1
+kubectl delete -f manifests/level-2
+kubectl delete -f manifests/level-3

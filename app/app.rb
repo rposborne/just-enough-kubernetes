@@ -4,7 +4,13 @@ require 'logger'
 
 class App < Sinatra::Base
   get '/' do
-    "Welcome, #{request.ip}"
+    <<~HTML
+      <h1>
+        Welcome, #{request.ip}
+      </h1>
+      <small>Pod: #{ENV["MY_POD_NAME"]}</small>
+      <small>Node: #{ENV["MY_NODE_NAME"]}</small>
+    HTML
   end
 
   get '/users/:id' do
