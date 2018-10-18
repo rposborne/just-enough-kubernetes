@@ -23,21 +23,18 @@ spec:
 
         # Use the downward API to know expose pod name to the ENV
         # https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
-        - name: MY_POD_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: MY_NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
+        # - name: MY_POD_NAME
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: metadata.name
+        # - name: MY_NODE_NAME
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: spec.nodeName
 
-        image: burningpony/just-enough-kubernetes:release-0.0.1
+        image: burningpony/just-enough-kubernetes:release-0.0.5
         command:
           - rackup
-        # args:
-        #   - "-p 9292"
-        imagePullPolicy: Always
         ports:
           - name: http
             containerPort: 9292
