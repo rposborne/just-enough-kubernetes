@@ -7,9 +7,12 @@ metadata:
 spec:
   containers:
   - name: just-enough-container
-    image: burningpony/just-enough-kubernetes:release-0.0.1
+    image: burningpony/just-enough-kubernetes:release-0.0.8
     command:
       - rackup
+    args:
+      - -o
+      - "0.0.0.0"
     ports:
       - name: http
         containerPort: 9292
