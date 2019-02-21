@@ -13,17 +13,56 @@ AVAILABLE_MESSAGES = [
 class App < Sinatra::Base
   get '/' do
     <<~HTML
-      <h1>
-        Welcome, #{request.ip}
-      </h1>
-      <small>Pod: #{ENV["MY_POD_NAME"]}</small>
-      <small>Node: #{ENV["MY_NODE_NAME"]}</small>
+      <html>
+        <head>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha256-2YQRJMXD7pIAPHiXr0s+vlRWA7GYJEK0ARns7k2sbHY=" crossorigin="anonymous" />
+          <style>
+          .header {
+            margin-top: 6rem;
+            text-align: center;
+          }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+          <section class="header">
+          <h1>
+            Hello from #{ENV["MY_POD_NAME"] ? "Kubernetes" : "Ruby"}
+          </h1>
+          <span class="button button-primary">IP: #{request.ip}</span>
+          <span class="button button-primary">Pod: #{ENV["MY_POD_NAME"]}</span>
+          <span class="button button-primary">Node: #{ENV["MY_NODE_NAME"]}</span>
+          </section>
+          </div>
+        </body>
+      </html>
     HTML
   end
 
   # Thanks https://github.com/makandra/nice/blob/master/stage-02/app/models/compliment.rb
   get '/praise/:name' do
-    "#{params[:name]}, #{AVAILABLE_MESSAGES.sample}"
+    <<~HTML
+    <html>
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha256-2YQRJMXD7pIAPHiXr0s+vlRWA7GYJEK0ARns7k2sbHY=" crossorigin="anonymous" />
+        <style>
+        .header {
+          margin-top: 6rem;
+          text-align: center;
+        }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+        <section class="header">
+        <h1>
+        #{params[:name]}, #{AVAILABLE_MESSAGES.sample}
+        </h1>
+        </section>
+        </div>
+      </body>
+    </html>
+    HTML
   end
 
   run! if app_file == $PROGRAM_NAME
