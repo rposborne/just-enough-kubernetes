@@ -4,8 +4,16 @@ require 'logger'
 
 
 class App < Sinatra::Base
-  get '/' do
 
+
+
+
+
+
+
+
+
+  get '/' do
     best_layout do
       <<~HTML
       <h1>
@@ -18,6 +26,17 @@ class App < Sinatra::Base
     end
   end
 
+
+
+
+
+
+
+
+
+
+
+
   # Thanks https://github.com/makandra/nice/blob/master/stage-02/app/models/compliment.rb
   get '/praise/:name' do
     best_layout do
@@ -28,6 +47,24 @@ class App < Sinatra::Base
       HTML
     end
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def best_layout
     <<~HTML
