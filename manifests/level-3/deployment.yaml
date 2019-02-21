@@ -17,24 +17,35 @@ spec:
       containers:
       # Hey this matches our level 1 pod!
       - name: just-enough-container
+        image: burningpony/just-enough-kubernetes:release-0.0.9
+        command:
+          - rackup
+        args:
+          - -o
+          - "0.0.0.0"
+        ports:
+          - name: http
+            containerPort: 9292
+
         env:
         - name: RACK_ENV
           value: production
 
         # Use the downward API to know expose pod name to the ENV
         # https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
-        # - name: MY_POD_NAME
-        #   valueFrom:
-        #     fieldRef:
-        #       fieldPath: metadata.name
-        # - name: MY_NODE_NAME
-        #   valueFrom:
-        #     fieldRef:
-        #       fieldPath: spec.nodeName
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
 
-        image: burningpony/just-enough-kubernetes:release-0.0.5
-        command:
-          - rackup
-        ports:
-          - name: http
-            containerPort: 9292
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
