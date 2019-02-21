@@ -12,13 +12,13 @@ https://cloud.docker.com/repository/docker/burningpony/just-enough-kubernetes/ge
 
 # Level 2
 
-    kubectl create -f manifests/level-1/deployment.yaml
+    kubectl create -f manifests/level-2
 
 ## Cut a new version
 
 https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
-    TAG=0.0.3
+    TAG=0.1.1
     docker build . -t burningpony/just-enough-kubernetes:release-$TAG
     docker push burningpony/just-enough-kubernetes:release-$TAG
 
