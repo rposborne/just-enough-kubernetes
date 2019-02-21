@@ -2,6 +2,14 @@ require 'sinatra/base'
 require 'stringio'
 require 'logger'
 
+AVAILABLE_MESSAGES = [
+  "Your parents are more proud of you than you'll ever know.",
+  "You actually looked super graceful that time you tripped in front of everyone.",
+  "People at trivia night are terrified by you.",
+  "You pick the best radio stations when you're riding shotgun.",
+  "Your pet loves you too much to ever run away."
+]
+
 class App < Sinatra::Base
   get '/' do
     <<~HTML
@@ -13,8 +21,9 @@ class App < Sinatra::Base
     HTML
   end
 
-  get '/users/:id' do
-    "User number #{params[:id]} is an uppity know-it-all"
+  # Thanks https://github.com/makandra/nice/blob/master/stage-02/app/models/compliment.rb
+  get '/praise/:name' do
+    "#{params[:name]}, #{AVAILABLE_MESSAGES.sample}"
   end
 
   run! if app_file == $PROGRAM_NAME
