@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: just-enough-container
-    image: burningpony/just-enough-kubernetes:release-0.1.0
+    image: burningpony/just-enough-kubernetes:release-0.1.1
     command:
       - rackup
     args:

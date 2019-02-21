@@ -17,7 +17,7 @@ spec:
       containers:
       # Hey this matches our level 1 pod!
       - name: just-enough-container
-        image: burningpony/just-enough-kubernetes:release-0.0.9
+        image: burningpony/just-enough-kubernetes:release-0.1.1
         command:
           - rackup
         args:
